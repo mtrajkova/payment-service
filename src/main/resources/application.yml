@@ -2,3 +2,14 @@ stripe:
   keys:
     public: pk_test_humCkHOMtGUXURzsu2ilqH1X00VjnZTKpK
     secret: sk_test_NvUz8qYi75J9GdoRi3016BOC00Ps2TRQpJ
+
+spring:
+  application:
+    name: payment-service
+
+server:
+  port: 8084
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8090/eureka
