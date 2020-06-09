@@ -55,7 +55,7 @@ public class StripeService {
         Map<String, Object> item = new HashMap<>();
         item.put("plan", subscriptionRequest.getPlan());
 
-        String customerId = this.createCustomer(subscriptionRequest.getEmail(), subscriptionRequest.getToken());
+        String customerId = this.createCustomer(subscriptionRequest.getEmail(), token);
         if (customerId == null) {
             throw new CustomerCreationException();
         }
