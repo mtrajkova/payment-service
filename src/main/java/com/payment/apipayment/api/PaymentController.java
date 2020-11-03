@@ -41,7 +41,7 @@ public class PaymentController {
         return ResponseEntity.ok("Subscription successfully cancelled.");
     }
 
-    @PostMapping("/coupon-validatior")
+    @PostMapping("/coupon-validator")
     public ResponseEntity<String> couponValidator(String code) {
         Coupon coupon = stripeService.retrieveCoupon(code);
         if (coupon != null && coupon.getValid()) {
@@ -56,7 +56,7 @@ public class PaymentController {
     }
 
     @PostMapping("/create-charge")
-    public ResponseEntity<String> createCharge(@RequestHeader("token") String token, @RequestBody ChargeRequest chargeRequest) {
+    public ResponseEntity<String> createCharge(@RequestHeader("Authorization") String jwt, @RequestHeader("token") String token, @RequestBody ChargeRequest chargeRequest) {
         String chargeId = stripeService.createCharge(chargeRequest, token);
         return ResponseEntity.ok("Success! Your chargeId is " + chargeId);
     }

@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Service
 public class StripeService {
-    @Value("${stripe.keys.secret")
+    @Value("${stripe.keys.secret}")
     private String API_SECRET_KEY;
 
     public StripeService() {
@@ -29,6 +29,7 @@ public class StripeService {
     public String createCustomer(String email, String token) {
         String id = null;
         try {
+            System.out.println("This is the api key " + API_SECRET_KEY);
             Stripe.apiKey = API_SECRET_KEY;
             Map<String, Object> customerParams = new HashMap<>();
             customerParams.put("description", "Customer for " + email);
